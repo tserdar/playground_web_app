@@ -11,7 +11,7 @@ const ChatBox = () => {
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://${apiUrl.replace(/^https?:\/\//, "")}/chat`);
+    const ws = new WebSocket(`wss://api.${apiUrl.replace(/^https?:\/\//, "")}/chat`);
     setSocket(ws);
 
     ws.onopen = () => {
