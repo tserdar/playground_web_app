@@ -124,7 +124,7 @@ const Index = () => {
             About
           </a>
           <a href="#try-now" className="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300">
-            Try Now
+            Try Out
           </a>
           <a href="#tech-stack" className="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300">
             Tech Stack
