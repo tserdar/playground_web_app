@@ -14,6 +14,7 @@ import Modal from "@/components/Modal";
 import axios from "axios";
 import ChatBox from "@/components/ChatBox";
 
+const apiUrl = import.meta.env.VITE_PLAYGROUND_API_URL;
 
 const Index = () => {
   const { toast } = useToast();
@@ -28,8 +29,8 @@ const Index = () => {
 
   const handleFileUpload = async (file: File, demoType: string) => {
     const endpointMap: Record<string, string> = {
-      "Face Recognition": "http://127.0.0.1:8000/face?visualize=True",
-      "Optical Character Recognition": "http://127.0.0.1:8000/ocr?visualize=True",
+      "Face Recognition": `${apiUrl}/face?visualize=True`,
+      "Optical Character Recognition": `${apiUrl}/ocr?visualize=True`,
     };
 
     const url = endpointMap[demoType];

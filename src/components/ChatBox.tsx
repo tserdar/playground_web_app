@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Send } from "lucide-react";
 
+const apiUrl = import.meta.env.VITE_PLAYGROUND_API_URL;
+
 const ChatBox = () => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [connected, setConnected] = useState(false);
@@ -9,11 +11,11 @@ const ChatBox = () => {
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8000/chat");
+    const ws = new WebSocket(`ws://${apiUrl.replace(/^https?:\/\//, "")}/chat`);
     setSocket(ws);
 
     ws.onopen = () => {
-      setConnected(true);
+    setConnected(true);
     setMessages((prev) => [
       ...prev,
       `[BOT]: Connection established. You may start chatting.`,
