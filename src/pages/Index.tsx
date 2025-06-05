@@ -63,17 +63,24 @@ const Index = () => {
       const imageBlob = response.data;
       const imageURL = URL.createObjectURL(imageBlob);
       setImageSrc(imageURL);
-    } catch (error: any) {
-      if (axios.isCancel(error)) {
-        toast({ title: "Upload Aborted", description: "You cancelled the upload." });
-      } else {
-        toast({
-          title: "Upload Failed",
-          description: error?.response?.data?.detail || error.message,
-          variant: "destructive",
-        });
+    } catch (error: unknown) {
+        if (axios.isCancel(error)) {
+          toast({ title: "Upload Aborted", description: "You cancelled the upload." });
+        } else if (axios.isAxiosError(error)) {
+          toast({
+            title: "Upload Failed",
+            description: error.response?.data?.detail || error.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Unexpected Error",
+            description: String(error),
+            variant: "destructive",
+          });
+        }
       }
-    } finally {
+    finally {
       setLoading(false);
       setUploadProgress(null);
     }
@@ -160,15 +167,28 @@ const Index = () => {
             </Alert>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
-                onClick={() => window.open("https://github.com/tserdar/web_app", "_blank")}
-              >
-                <Github className="mr-2 h-5 w-5" />
-                View Project Repository
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 px-6 py-3 text-lg transition-all duration-300 hover:scale-105"
+                  onClick={() => window.open("https://github.com/tserdar/playground_web_app", "_blank")}
+                >
+                  <Github className="mr-2 h-5 w-5" />
+                  Frontend Repository
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0 px-6 py-3 text-lg transition-all duration-300 hover:scale-105"
+                  onClick={() => window.open("https://github.com/tserdar/playground_api", "_blank")}
+                >
+                  <Github className="mr-2 h-5 w-5" />
+                  API Repository
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+
               <SocialLinks />
             </div>
           </div>
