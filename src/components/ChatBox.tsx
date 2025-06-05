@@ -14,6 +14,10 @@ const ChatBox = () => {
 
     ws.onopen = () => {
       setConnected(true);
+    setMessages((prev) => [
+      ...prev,
+      `[BOT]: Connection established. You may start chatting.`,
+    ]);
     };
 
     ws.onmessage = (event) => {
