@@ -13,6 +13,7 @@ interface Demo {
   acceptedTypes: string;
   status: string;
   gradient: string;
+  requiresUpload?: boolean;
 }
 
 interface ProjectCardProps {
@@ -61,18 +62,28 @@ const ProjectCard = ({ demo, isActive, onUpload, onActivate }: ProjectCardProps)
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="relative">
+      <CardContent className="relative flex items-center justify-center min-h-[30vh]">
         {!isComingSoon ? (
           <>
-            {isActive ? (
+            {demo.title === "AI Chatbot" ? (
+              <Button
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-md transition-all duration-300"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onActivate();
+                }}
+              >
+                Start Chat
+              </Button>
+            ) : isActive ? (
               <FileUpload
                 onFileUpload={onUpload}
                 acceptedTypes={demo.acceptedTypes}
-                className="mt-4"
+                className="w-full"
               />
             ) : (
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="w-full bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -92,6 +103,7 @@ const ProjectCard = ({ demo, isActive, onUpload, onActivate }: ProjectCardProps)
           </div>
         )}
       </CardContent>
+
     </Card>
   );
 };

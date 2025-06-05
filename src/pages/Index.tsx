@@ -12,6 +12,7 @@ import SocialLinks from "@/components/SocialLinks";
 import Modal from "@/components/Modal";
 
 import axios from "axios";
+import ChatBox from "@/components/ChatBox";
 
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
   const [loading, setLoading] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [abortController, setAbortController] = useState<AbortController | null>(null);
+  const [chatOpen, setChatOpen] = useState(false);
 
 
   const handleFileUpload = async (file: File, demoType: string) => {
@@ -95,7 +97,8 @@ const Index = () => {
       icon: Eye,
       acceptedTypes: "image/*,video/*",
       status: "Active",
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-purple-500 to-pink-500",
+      requiresUpload: true 
     },
     {
       id: "ocr",
@@ -104,16 +107,19 @@ const Index = () => {
       icon: FileText,
       acceptedTypes: "image/*",
       status: "Active",
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
+      requiresUpload: true 
+
     },
     {
       id: "chatbot",
       title: "AI Chatbot",
       description: "Intelligent conversational AI powered by modern language models",
       icon: MessageSquare,
-      acceptedTypes: "",
-      status: "Coming Soon",
-      gradient: "from-green-500 to-emerald-500"
+      acceptedTypes: "", // ✅ still fine
+      status: "Active",
+      gradient: "from-green-500 to-emerald-500",
+      requiresUpload: false 
     }
   ];
 
@@ -240,7 +246,11 @@ const Index = () => {
                 demo={demo}
                 isActive={demo.status !== "Coming Soon"}
                 onUpload={(file) => handleFileUpload(file, demo.title)}
-                onActivate={() => {}}
+                onActivate={() => {
+                  if (demo.title === "AI Chatbot") {
+                    setChatOpen(true);
+                  }
+                }}
               />
             ))}
           </div>
@@ -341,6 +351,10 @@ const Index = () => {
             className="rounded-md max-w-full max-h-[70vh] mx-auto"
           />
         )}
+      </Modal>
+
+      <Modal isOpen={chatOpen} onClose={() => setChatOpen(false)} loading={false}>
+        <ChatBox />
       </Modal>
     </div>
   );
