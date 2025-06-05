@@ -91,7 +91,7 @@ const Index = () => {
     {
       id: "face-recognition",
       title: "Face Recognition",
-      description: "Advanced facial detection and recognition using deep learning models",
+      description: "Basic facial detection and recognition using deep learning models",
       icon: Eye,
       acceptedTypes: "image/*,video/*",
       status: "Active",
@@ -100,7 +100,7 @@ const Index = () => {
     {
       id: "ocr",
       title: "Optical Character Recognition",
-      description: "Extract text from images with high accuracy using computer vision",
+      description: "Extract text from images with using computer vision",
       icon: FileText,
       acceptedTypes: "image/*",
       status: "Active",
@@ -161,7 +161,7 @@ const Index = () => {
             <Alert className="mb-8 bg-amber-900/20 border-amber-500/30 max-w-3xl mx-auto">
               {/*<AlertTriangle className="h-4 w-4 text-amber-400" />*/}
               <AlertDescription className="text-amber-200 text-left">
-                <strong>⚠️ Project Depth:</strong> As an individual, running large and complex ML models on cloud infrastructure is too expensive. My current aim is to represent the most simplistic versions of what's possible. The focus is on demonstrating 
+                <strong>⚠️INFO:</strong> As an individual, running large and complex ML models on cloud infrastructure is too expensive. My current aim here is to showcase the most simplistic versions of what's possible. Thus, the main focus is demonstrating 
                 core concepts, clean architecture, and MLOps practices rather than production-scale implementations.
               </AlertDescription>
             </Alert>
@@ -204,8 +204,8 @@ const Index = () => {
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
               This is intended to be an interactive portfolio project to showcase my skills in AI/ML and MLOPs engineering. It will feature practical implementations 
-              of computer vision, natural language processing, and MLOps practices. I intend to add my own self-trained models later on. But as of now my focus is to automate the pipeline around it. The complete code is available to public (see GitHub link above). with Python (FastAPI) 
-              backend and modern React frontend, it demonstrates both technical skills and DevOps capabilities.
+              of computer vision, natural language processing, and MLOps practices. I intend to add my own self-trained models later on. But as of now my focus is to automate the pipeline around it. The complete code is available to public (see GitHub link above) with Python (FastAPI) 
+              backend and modern React frontend, it demonstrates both technical skills and MLOps/DevOps capabilities.
             </p>
             {/*
             <p className="text-gray-400 text-base leading-relaxed">
