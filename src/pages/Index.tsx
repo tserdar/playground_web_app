@@ -275,7 +275,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {["Python", "PyTorch", "EasyOCR", "retina-face", "scikit-learn", "OpenCV/Pillow"].map((tech) => (
+                    {["Python", "PyTorch", "Hugging Face - Transformers", "EasyOCR", "retina-face", "scikit-learn", "OpenCV/Pillow"].map((tech) => (
                       <Badge key={tech} variant="secondary" className="bg-green-500/20 text-green-400 border-green-500/30">
                         {tech}
                       </Badge>
