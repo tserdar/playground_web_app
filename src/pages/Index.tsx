@@ -9,19 +9,76 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import FileUpload from "@/components/FileUpload";
 import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
+import Modal from "@/components/Modal";
+
+import axios from "axios";
+
 
 const Index = () => {
   const { toast } = useToast();
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
 
-  const handleFileUpload = (file: File, demoType: string) => {
-    toast({
-      title: "File uploaded!",
-      description: `${file.name} ready for ${demoType} processing`,
-    });
-    console.log(`File uploaded for ${demoType}:`, file);
-    // Here you would typically send the file to your FastAPI backend
+
+  const handleFileUpload = async (file: File, demoType: string) => {
+    const endpointMap: Record<string, string> = {
+      "Face Recognition": "http://127.0.0.1:8000/face?visualize=True",
+      "Optical Character Recognition": "http://127.0.0.1:8000/ocr?visualize=True",
+    };
+
+    const url = endpointMap[demoType];
+    if (!url) {
+      toast({
+        title: "Unsupported Demo",
+        description: `No endpoint configured for: ${demoType}`,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const controller = new AbortController();
+    setAbortController(controller);
+    setModalOpen(true);
+    setLoading(true);
+    setImageSrc(null);
+
+    try {
+      const response = await axios.post(url, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        responseType: "blob",
+        signal: controller.signal,
+        onUploadProgress: (progressEvent) => {
+          const percent = Math.round((progressEvent.loaded * 100) / (progressEvent.total || 1));
+          setUploadProgress(percent);
+        },
+      });
+
+      const imageBlob = response.data;
+      const imageURL = URL.createObjectURL(imageBlob);
+      setImageSrc(imageURL);
+    } catch (error: any) {
+      if (axios.isCancel(error)) {
+        toast({ title: "Upload Aborted", description: "You cancelled the upload." });
+      } else {
+        toast({
+          title: "Upload Failed",
+          description: error?.response?.data?.detail || error.message,
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setLoading(false);
+      setUploadProgress(null);
+    }
   };
+
 
   const demos = [
     {
@@ -161,9 +218,9 @@ const Index = () => {
               <ProjectCard
                 key={demo.id}
                 demo={demo}
-                isActive={activeDemo === demo.id}
+                isActive={demo.status !== "Coming Soon"}
                 onUpload={(file) => handleFileUpload(file, demo.title)}
-                onActivate={() => setActiveDemo(demo.id)}
+                onActivate={() => {}}
               />
             ))}
           </div>
@@ -247,6 +304,24 @@ const Index = () => {
           </p>
         </div>
       </footer>
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => {
+          if (abortController) abortController.abort();
+          setModalOpen(false);
+          setLoading(false);
+          setImageSrc(null);
+        }}
+        loading={loading}
+      >
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt="Result"
+            className="rounded-md max-w-full max-h-[70vh] mx-auto"
+          />
+        )}
+      </Modal>
     </div>
   );
 };
