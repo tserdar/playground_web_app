@@ -168,8 +168,7 @@ const Index = () => {
             <Alert className="mb-8 bg-amber-900/20 border-amber-500/30 max-w-3xl mx-auto">
               {/*<AlertTriangle className="h-4 w-4 text-amber-400" />*/}
               <AlertDescription className="text-amber-200 text-left">
-                <strong>⚠️INFO:</strong> As an individual, running large and complex ML models on cloud infrastructure is too expensive. My current aim here is to showcase the most simplistic versions of what's possible. Thus, the main focus is demonstrating 
-                core concepts, clean architecture, and MLOps practices rather than production-scale implementations.
+                This project is intentionally built to cost **virtually nothing aside from the domain name**. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
               </AlertDescription>
             </Alert>
 
