@@ -168,7 +168,7 @@ const Index = () => {
             <Alert className="mb-8 bg-amber-900/20 border-amber-500/30 max-w-3xl mx-auto">
               {/*<AlertTriangle className="h-4 w-4 text-amber-400" />*/}
               <AlertDescription className="text-amber-200 text-left">
-                This project is intentionally built to cost **virtually nothing aside from the domain name**. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
+                <strong>⚠️INFO:</strong> This project is intentionally built to cost <strong>virtually nothing aside from the domain name</strong>. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
               </AlertDescription>
             </Alert>
 
