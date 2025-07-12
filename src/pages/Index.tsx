@@ -151,7 +151,7 @@ const Index = () => {
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-blue-800/20" />
         <div className="relative container mx-auto px-6 py-20">
-          <div className="text-center max-w-4xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto">
             <Badge className="mb-6 bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 hover:from-purple-600 hover:to-blue-600 transition-all duration-300">
               🚀 Ongoing Project
             </Badge>
@@ -168,7 +168,7 @@ const Index = () => {
             <Alert className="mb-8 bg-amber-900/20 border-amber-500/30 max-w-3xl mx-auto">
               {/*<AlertTriangle className="h-4 w-4 text-amber-400" />*/}
               <AlertDescription className="text-amber-200 text-left">
-                🛈 This project is intentionally built to cost <strong>virtually nothing aside from the domain name</strong>. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
+                🛈 This project is intentionally built to cost <strong>virtually nothing aside from the domain name</strong>. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy AI/ML systems. 
               </AlertDescription>
             </Alert>
 
