@@ -168,13 +168,13 @@ const Index = () => {
             <Alert className="mb-8 bg-amber-900/20 border-amber-500/30 max-w-3xl mx-auto">
               {/*<AlertTriangle className="h-4 w-4 text-amber-400" />*/}
               <AlertDescription className="text-amber-200 text-left">
-                <strong>⚠️INFO:</strong> This project is intentionally built to cost <strong>virtually nothing aside from the domain name</strong>. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
+                🛈 This project is intentionally built to cost <strong>virtually nothing aside from the domain name</strong>. It exists purely as a technical showcase to demonstrate my ability to design, build, and deploy end-to-end AI/ML systems. Rather than focusing on production-scale infrastructure, the emphasis is on clean architecture, automation, MLOps practices, and the ability to deliver working prototypes independently.
               </AlertDescription>
             </Alert>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
               <div className="flex flex-wrap justify-center gap-4">
-                <Button 
+                {/* <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 px-6 py-3 text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => window.open("https://github.com/tserdar/playground_web_app", "_blank")}
@@ -182,15 +182,15 @@ const Index = () => {
                   <Github className="mr-2 h-5 w-5" />
                   Frontend Repository
                   <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
+                </Button> */}
 
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0 px-6 py-3 text-lg transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-green-600 to-green-400 hover:from-blue-700 hover:to-cyan-700 text-white border-0 px-6 py-3 text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => window.open("https://github.com/tserdar/playground_api", "_blank")}
                 >
                   <Github className="mr-2 h-5 w-5" />
-                  API Repository
+                  Public API Repository
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -204,14 +204,24 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-16 relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-4">
+          <div className="max-w-5xl mx-auto text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
               About This Project
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              This is intended to be an interactive portfolio project to showcase my skills in AI/ML and MLOPs engineering. It will feature practical implementations 
-              of computer vision, natural language processing, and MLOps practices. I intend to add my own self-trained models later on. But as of now my focus is to automate the pipeline around it. The complete code is available to public (see GitHub link above) with Python (FastAPI) 
-              backend and modern React frontend, it demonstrates both technical skills and MLOps/DevOps capabilities.
+              This is intended to be a <strong>fully open source</strong> interactive portfolio project to showcase my skills in <strong>Applied AI/ML Research</strong> and <strong>Engineering</strong> (incl. Backend, DevOps & MLOPs). It features prototype-level implementations of computer vision, NLP, and DevOps/MLOps practices — <strong>functional by design, but not intended for further refinement.</strong> I plan to add self-trained models later. For now, my focus is on automating the pipeline and integration layer.
+              <br />
+              <br />
+              <span className="text-yellow-300 font-medium">🛈 Frontend software is outside of my primary area of expertise.</span> The UI here is solely built for demonstration purposes.<br />
+              Thus, the frontend code <strong>does not represent my main professional skills</strong>, which lies in <strong>Applied AI/ML Research</strong> and <strong>Engineering</strong> (incl. Backend, DevOps & MLOPs). You can view the optional web client code{" "}
+              <a
+                href="https://github.com/tserdar/playground_web_app"
+                className="underline text-blue-300 hover:text-blue-400"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>.
             </p>
             {/*
             <p className="text-gray-400 text-base leading-relaxed">
@@ -327,7 +337,7 @@ const Index = () => {
       <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-400 mb-4">
-            This is an ongoing project showcasing AI/ML development and MLOps practices.
+            This is an ongoing project showcasing AI/ML development and DevOps/MLOps practices.
           </p>
           <p className="text-gray-500 text-sm">
             Built with ❤️ and lots of decaf ☕ | © 2025 Serdar's AI/ML Playground
