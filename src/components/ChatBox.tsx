@@ -50,7 +50,8 @@ const ChatBox = () => {
       <div className="flex-1 overflow-y-auto bg-gray-800 rounded-md p-4 text-white text-sm space-y-2">
         {!connected && (
           <div className="text-yellow-400 font-medium mb-2">
-            Please wait for connection...
+            Due to low-resource situation getting responses from the bot may take a while.
+            Please wait for connection... <br />
           </div>
         )}
         {messages.map((msg, i) => {
