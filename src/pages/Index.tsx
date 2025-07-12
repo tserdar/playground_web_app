@@ -161,7 +161,7 @@ const Index = () => {
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed animate-fade-in">
               An interactive demonstration project where I play with AI/ML Engineering concepts.
               <br />
-              <span className="text-blue-400">Researching, learning, building and sharing the journey.</span>
+              <span className="text-blue-400">Researching, building and constantly evolving...</span>
             </p>
             
             {/* Work in Progress Alert */}
